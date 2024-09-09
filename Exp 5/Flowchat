@@ -1,0 +1,24 @@
+Sender:                             Receiver:
+
+| Start Sending Packets          |  | Wait for Packet(s)                 |
+|---------------------------------|  |------------------------------------|
+| Send Packet N                   |  | Receive Packet N                   |
+|---------------------------------|  |------------------------------------|
+| Start Timer for Packet N        |  | Send ACK for Packet N              |
+|---------------------------------|  |------------------------------------|
+| Wait for ACK N                  |  | Store Packet if Out of Order       |
+|---------------------------------|  |------------------------------------|
+| If ACK N Received:              |  | Wait for Missing Packet            |
+|    Stop Timer                   |  |------------------------------------|
+|    Slide Window, Send Next      |  | Receive Missing Packet             |
+|---------------------------------|  |------------------------------------|
+| If Timeout:                     |  | Send ACK for Missing Packet        |
+|    Resend Packet N              |  |------------------------------------|
+|    Restart Timer                |  | Process Stored Packets in Order    |
+|---------------------------------|  |------------------------------------|
+| Repeat Process Until All Packets|  | Send ACKs for Stored Packets       |
+| are Sent and ACKed              |  |------------------------------------|
+|---------------------------------|  |------------------------------------|
+| End Transmission                |  | Transmission Ends                  |
+|---------------------------------|  |------------------------------------|
+

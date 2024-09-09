@@ -1,0 +1,4 @@
+example.com 93.184.216.34
+google.com 172.10.10.2
+gmail.com 142.12.10.1
+
